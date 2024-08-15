@@ -160,6 +160,7 @@ import {
   Grid,
   GridItem,
   HStack,
+  VStack,
   Stack,
   Text,
   Radio,
@@ -247,7 +248,7 @@ function Shop() {
     <>
       <NavBar />
       <Box>
-        <Grid templateColumns='repeat(9, 1fr)' gap={4} mt={8} mb={8}>
+        <Grid templateColumns='repeat(9, 1fr)' gap={0} mt={8} mb={8}>
           <GridItem
             colSpan={{ base: '9', md: '4', lg: '2' }}
             p={5}
@@ -257,11 +258,11 @@ function Shop() {
             boxShadow='md'
             position='sticky'
             top={0}
-            h='fit-content'
+            // h='fit-content'
             zIndex={10}
           >
             <Flex direction='column'>
-              <Flex justify='space-between' align='center' mb={4}>
+              <Flex justify='space-between' align='center' mb={0}>
                 <Text fontWeight='600' fontSize='3xl'>Filters</Text>
                 <Box display={{ base: 'none', md: 'none', lg: 'block' }}>
                   <i className="fa-regular fa-sliders text-xl mt-1 cursor-pointer"></i>
@@ -271,22 +272,27 @@ function Shop() {
                 </Box>
               </Flex>
 
-              <Flex flexDir='column' gap={8}>
-                <Text my={3} fontWeight='600' fontSize='18px'>Categories</Text>
-                <Stack my={2}>
+              <Flex flexDir='column' display={{base:"none", md:"none", lg:'flex'}} gap={0}>
+                <Text mb={3} fontWeight='600' fontSize='18px'>Categories</Text>
+                <VStack h={'fit-content'} mt={3} justify={"flex-start"} align={"flex-start"} spacing={'1px'} >
                   {categories.map((c) => (
                     <Checkbox
                       key={c._id}
+                      spacing={2}
+                      flex={"flex"}
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                      mt={-5}
                       onChange={(e) => handleCategoryFilter(e.target.checked, c._id)}
                       colorScheme="red"
                     >
-                      <Text fontWeight='400'>{c.name}</Text>
+                      <Text mt={"12px"} fontWeight='400'>{c.name}</Text>
                     </Checkbox>
                   ))}
-                </Stack>
+                </VStack>
 
                 <Text fontWeight='600' fontSize='3xl'>Price</Text>
-                <RadioGroup onChange={handlePriceChange} value={priceRange}>
+                <RadioGroup mt={-4} onChange={handlePriceChange} value={priceRange}>
                   <Stack spacing={4}>
                     <Radio value={[0, 20]}>Up to $20</Radio>
                     <Radio value={[21, 50]}>$21 - $50</Radio>
@@ -303,7 +309,7 @@ function Shop() {
             </Flex>
           </GridItem>
 
-          <GridItem p={12} colSpan={{ base: '9', md: '5', lg: '7' }}>
+          <GridItem p={{base:12, }} colSpan={{ base: '10', md: '5', lg: '7' }}>
             <Box>
               <Text mb={4} fontWeight='700' fontSize='3xl'>Top Trending</Text>
             </Box>

@@ -15,7 +15,7 @@ function ProductCard({ product }) {
   };
 
   return (
-    <Card maxW={{ base: '100%', md: '60%', lg: '30%' }} rounded={20} boxShadow={'0px 4px 10px rgba(0, 0, 0, 0.1)'}>
+    <Card w={"600px"} maxW={{ base: '100%', md: '60%', lg: '30%' }} rounded={20} boxShadow={'0px 4px 10px rgba(0, 0, 0, 0.1)'}>
       <CardBody
         boxShadow={'sm'}
         display={'flex'}
@@ -29,7 +29,7 @@ function ProductCard({ product }) {
           src={ProductImg} // Placeholder image; update to use product image if available
           alt={product.name}
           borderRadius="lg"
-          h={{ base: '40vh', md: '20vh' }}
+          h={{ base: '30vh', md: '20vh' }}
         />
         <Stack mt="6" spacing="3">
           <Heading size="md">{product.name}</Heading>
